@@ -1,61 +1,50 @@
+const API_KEY = "AIzaSyCY9QEHljBlrRFRc0a24pbJCzc5k9Q1yso"; // 👈 এখানে তোমার নতুন key বসাবে
 
-// ====================================
-// A Tube YouTube Clone
-// ====================================
+const grid = document.getElementById("videoGrid");
+const frame = document.getElementById("frame");
+const player = document.getElementById("player");
 
+// default load
+loadVideos("Trending");
 
-const API_KEY = "PASTE_YOUR_YOUTUBE_API_KEY_HERE";
+async function loadVideos(query){
 
+grid.innerHTML = "Loading...";
 
-const videoGrid = document.getElementById("videoGrid");
-const searchBtn = document.getElementById("searchBtn");
-const searchInput = document.getElementById("searchInput");
+const res = await fetch(
+`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&maxResults=20&key=${API_KEY}`
+);
 
+const data = await res.json();
 
-const modal = document.getElementById("videoModal");
-const videoFrame = document.getElementById("videoFrame");
-const closeModal = document.getElementById("closeModal");
+grid.innerHTML = "";
 
+data.items.forEach(video => {
 
-// =============================
-// Load Default Videos
-// =============================
+const div = document.createElement("div");
+div.className = "card";
 
-loadVideos("Trending videos");
+div.innerHTML = `
+<img src="${video.snippet.thumbnails.high.url}">
+<h3>${video.snippet.title}</h3>
+`;
 
+div.onclick = () => {
+playVideo(video.id.videoId);
+};
 
-// =============================
-// Search Button
-// =============================
-
-searchBtn.addEventListener("click", () => {
-
-  const query = searchInput.value;
-
-  if(query !== ""){
-    loadVideos(query);
-  }
-
-});
-
-
-// =============================
-// Enter Key Search
-// =============================
-
-searchInput.addEventListener("keypress", (e) => {
-
-  if(e.key === "Enter"){
-
-    const query = searchInput.value;
-
-    if(query !== ""){
-      loadVideos(query);
-    }
-
-  }
+grid.appendChild(div);
 
 });
 
+}
 
-// =============================
+function playVideo(id){
+frame.src = `https://www.youtube.com/embed/${id}`;
+player.style.display = "block";
+}
+
+function searchVideo(){
+const q = document.getElementById("searchInput").value;
+loadVideos(q);
+}
