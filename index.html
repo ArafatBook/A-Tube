@@ -1,234 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Tube</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Tube</title>
 
-  <link rel="stylesheet" href="style.css">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-  <!-- TOP NAVBAR -->
-
-  <header class="topbar">
-
-    <div class="left-topbar">
-
-      <div class="menu-btn">☰</div>
-
-      <div class="logo">
-        <span>A</span> Tube
-      </div>
-
-    </div>
-
-
-    <div class="center-topbar">
-
-      <input type="text" placeholder="Search videos...">
-
-      <button>
-        🔍
-      </button>
-
-    </div>
-
-
-    <div class="right-topbar">
-
-      <button class="upload-btn">Upload</button>
-
-      <div class="profile"></div>
-
-    </div>
-
-  </header>
-
-
-  <!-- SIDEBAR -->
-
-  <aside class="sidebar">
-
-    <div class="sidebar-item active">🏠 Home</div>
-    <div class="sidebar-item">🔥 Trending</div>
-    <div class="sidebar-item">🎵 Music</div>
-    <div class="sidebar-item">🎮 Gaming</div>
-    <div class="sidebar-item">📺 Live</div>
-    <div class="sidebar-item">⚽ Sports</div>
-    <div class="sidebar-item">💻 Technology</div>
-    <div class="sidebar-item">🎬 Movies</div>
-    <div class="sidebar-item">📚 Education</div>
-
-  </aside>
-
-
-  <!-- MAIN CONTENT -->
-
-  <main class="main">
-
-    <!-- HERO SECTION -->
-
-    <section class="hero">
-
-      <div class="hero-overlay">
-
-        <h1>Watch Unlimited Videos</h1>
-
-        <p>
-          Discover trending gaming, music, anime, technology and entertainment videos instantly.
-        </p>
-
-        <button>Explore Now</button>
-
-      </div>
-
-    </section>
-
-
-    <!-- CATEGORY BAR -->
-
-    <section class="category-bar">
-
-      <button class="active-cat">All</button>
-      <button>Gaming</button>
-      <button>Music</button>
-      <button>Anime</button>
-      <button>Live</button>
-      <button>Football</button>
-      <button>Technology</button>
-      <button>Programming</button>
-      <button>Free Fire</button>
-      <button>Movies</button>
-
-    </section>
-
-
-    <!-- VIDEO GRID -->
-
-    <section class="video-grid">
-
-
-      <!-- CARD -->
-
-      <div class="video-card">
-
-        <div class="thumbnail">
-          <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg">
-          <span class="duration">12:45</span>
-        </div>
-
-        <div class="video-content">
-
-          <div class="channel-avatar"></div>
-
-          <div class="video-details">
-
-            <h3>Epic Gaming Highlights 2026</h3>
-
-            <p>A Tube Gaming</p>
-
-            <span>1.2M views • 2 days ago</span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- CARD -->
-
-      <div class="video-card">
-
-        <div class="thumbnail">
-          <img src="https://i.ytimg.com/vi/ysz5S6PUM-U/maxresdefault.jpg">
-          <span class="duration">8:21</span>
-        </div>
-
-        <div class="video-content">
-
-          <div class="channel-avatar"></div>
-
-          <div class="video-details">
-
-            <h3>Top Technology Gadgets 2026</h3>
-
-            <p>Tech World</p>
-
-            <span>580K views • 1 week ago</span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- CARD -->
-
-      <div class="video-card">
-
-        <div class="thumbnail">
-          <img src="https://i.ytimg.com/vi/jNQXAC9IVRw/maxresdefault.jpg">
-          <span class="duration">5:14</span>
-        </div>
-
-        <div class="video-content">
-
-          <div class="channel-avatar"></div>
-
-          <div class="video-details">
-
-            <h3>Anime Edit Compilation</h3>
-
-            <p>Anime Hub</p>
-
-            <span>890K views • 5 days ago</span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- CARD -->
-
-      <div class="video-card">
-
-        <div class="thumbnail">
-          <img src="https://i.ytimg.com/vi/aqz-KE-bpKQ/maxresdefault.jpg">
-          <span class="duration">22:10</span>
-        </div>
-
-        <div class="video-content">
-
-          <div class="channel-avatar"></div>
-
-          <div class="video-details">
-
-            <h3>Relax Music Mix</h3>
-
-            <p>Music Studio</p>
-
-            <span>3M views • 3 weeks ago</span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-    </section>
-
-  </main>
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="logo">🔥 A Tube</div>
+
+  <div class="search">
+    <input id="searchInput" placeholder="Search videos...">
+    <button onclick="searchVideo()">Search</button>
+  </div>
+
+  <div class="actions">
+    <button>Upload</button>
+    <button>Login</button>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <button onclick="loadVideos('Trending')">Trending</button>
+  <button onclick="loadVideos('Gaming')">Gaming</button>
+  <button onclick="loadVideos('Music')">Music</button>
+  <button onclick="loadVideos('Free Fire')">Free Fire</button>
+  <button onclick="loadVideos('Technology')">Technology</button>
+</div>
+
+<!-- MAIN -->
+<main>
+  <div id="videoGrid" class="grid"></div>
+</main>
+
+<!-- VIDEO PLAYER -->
+<div id="player" class="player">
+  <iframe id="frame" allowfullscreen></iframe>
+</div>
+
+<script src="app.js"></script>
 
 </body>
 </html>
