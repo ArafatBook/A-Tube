@@ -1,36 +1,75 @@
 
-// ====================================
-// A Tube YouTube Clone
-// ====================================
+      videoGrid.appendChild(card);
+
+    });
 
 
-const API_KEY = "PASTE_YOUR_YOUTUBE_API_KEY_HERE";
+    saveSearch(query, data.items);
 
+  }
 
-const videoGrid = document.getElementById("videoGrid");
-const searchBtn = document.getElementById("searchBtn");
-const searchInput = document.getElementById("searchInput");
+  catch(error){
 
+    videoGrid.innerHTML = "<h2>Failed To Load Videos</h2>";
 
-const modal = document.getElementById("videoModal");
-const videoFrame = document.getElementById("videoFrame");
-const closeModal = document.getElementById("closeModal");
+    console.log(error);
 
+  }
 
-// =============================
-// Load Default Videos
-// =============================
-
-loadVideos("Trending videos");
+}
 
 
 // =============================
-// Search Button
+// Play Video Modal
 // =============================
 
-searchBtn.addEventListener("click", () => {
+function playVideo(videoId){
 
-  const query = searchInput.value;
+  modal.style.display = "block";
 
-  if(query !== ""){
-    loadVideos(query);
+  videoFrame.src = `https://www.youtube.com/embed/${videoId}`;
+
+}
+
+
+// =============================
+// Close Modal
+// =============================
+
+closeModal.addEventListener("click", () => {
+
+  modal.style.display = "none";
+
+  videoFrame.src = "";
+
+});
+
+
+window.addEventListener("click", (e) => {
+
+  if(e.target === modal){
+
+    modal.style.display = "none";
+
+    videoFrame.src = "";
+
+  }
+
+});
+
+
+// =============================
+// Save Search Cache
+// =============================
+
+function saveSearch(query, videos){
+
+  const cache = {
+    query,
+    videos,
+    time: Date.now()
+  };
+
+  localStorage.setItem(`search_${query}`, JSON.stringify(cache));
+
+}
