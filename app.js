@@ -1,75 +1,61 @@
 
-      videoGrid.appendChild(card);
+// ====================================
+// A Tube YouTube Clone
+// ====================================
 
-    });
+
+const API_KEY = "PASTE_YOUR_YOUTUBE_API_KEY_HERE";
 
 
-    saveSearch(query, data.items);
+const videoGrid = document.getElementById("videoGrid");
+const searchBtn = document.getElementById("searchBtn");
+const searchInput = document.getElementById("searchInput");
 
-  }
 
-  catch(error){
-
-    videoGrid.innerHTML = "<h2>Failed To Load Videos</h2>";
-
-    console.log(error);
-
-  }
-
-}
+const modal = document.getElementById("videoModal");
+const videoFrame = document.getElementById("videoFrame");
+const closeModal = document.getElementById("closeModal");
 
 
 // =============================
-// Play Video Modal
+// Load Default Videos
 // =============================
 
-function playVideo(videoId){
-
-  modal.style.display = "block";
-
-  videoFrame.src = `https://www.youtube.com/embed/${videoId}`;
-
-}
+loadVideos("Trending videos");
 
 
 // =============================
-// Close Modal
+// Search Button
 // =============================
 
-closeModal.addEventListener("click", () => {
+searchBtn.addEventListener("click", () => {
 
-  modal.style.display = "none";
+  const query = searchInput.value;
 
-  videoFrame.src = "";
-
-});
-
-
-window.addEventListener("click", (e) => {
-
-  if(e.target === modal){
-
-    modal.style.display = "none";
-
-    videoFrame.src = "";
-
+  if(query !== ""){
+    loadVideos(query);
   }
 
 });
 
 
 // =============================
-// Save Search Cache
+// Enter Key Search
 // =============================
 
-function saveSearch(query, videos){
+searchInput.addEventListener("keypress", (e) => {
 
-  const cache = {
-    query,
-    videos,
-    time: Date.now()
-  };
+  if(e.key === "Enter"){
 
-  localStorage.setItem(`search_${query}`, JSON.stringify(cache));
+    const query = searchInput.value;
 
-}
+    if(query !== ""){
+      loadVideos(query);
+    }
+
+  }
+
+});
+
+
+// =============================
