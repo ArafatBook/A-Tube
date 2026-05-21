@@ -1,4 +1,27 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Tube</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+
+    <div class="logo">
+      <span class="red">A</span> Tube
+    </div>
+
+    <div class="search-box">
       <input type="text" id="searchInput" placeholder="Search videos...">
       <button id="searchBtn">Search</button>
     </div>
@@ -38,39 +61,4 @@
       <button onclick="quickSearch('Football')">Football</button>
       <button onclick="quickSearch('Technology')">Technology</button>
       <button onclick="quickSearch('Anime')">Anime</button>
-    </div>
-
-
-    <!-- VIDEO GRID -->
-
-    <div id="videoGrid" class="video-grid"></div>
-
-  </main>
-
-
-  <!-- VIDEO MODAL -->
-
-  <div id="videoModal" class="modal">
-
-    <div class="modal-content">
-
-      <span id="closeModal">×</span>
-
-      <iframe
-        id="videoFrame"
-        width="100%"
-        height="500"
-        src=""
-        frameborder="0"
-        allowfullscreen>
-      </iframe>
-
-    </div>
-
-  </div>
-
-
-<script src="app.js"></script>
-
-</body>
 </html>
